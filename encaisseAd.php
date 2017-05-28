@@ -25,6 +25,7 @@
 		$ad->getactivites($tact);
 		$nadh = " (".$ad->numMGEN;
 		if ($ad->qualite=="M") $nadh .="M)"; else $nadh .="C)";
+		
 		//echo $ad->activite1."-".$ad->particip1."   ".$ad->activite2."-".$ad->particip2."   ".$ad->activite3."-".$ad->particip3."   ";
 		//echo $ad->activite4."-".$ad->particip4."   ".$ad->activite5."-".$ad->particip5."   ".$ad->activite6."-".$ad->particip6."<br>   ";
         $act=array();$part=array();
@@ -54,18 +55,18 @@
 					<td><input name="banque" type="text" size=30><td>
 				<tr>
 				<tr>
-					<td>Titulaire du chèque<sup>*</sup> : </td>
+					<td>Titulaire(s) du chèque<sup>*</sup> : </td>
 					<td><input name="titulaire" type="text" size=30><td>
 				</tr>
 				<tr>
-					<td style="font-size:70%"><sup>*</sup>Si différent du bénéficiaire</span></td>
+					<td style="font-size:70%"><sup>*</sup>Si différent de l'adhérent concerné</span></td>
 				</tr>
 
 			</table>
 			<br><br>
 			<table  class="saisie">
 				<tr>
-					<td>Bénéficiaire de l'encaissement : <?php echo "<span style='font-size:130%'>".$ad->prenomnom.$nadh."</span>" ?></td>					
+					<td>Adhérent concerné : <?php echo "<span style='font-size:130%'>".$ad->prenomnom.$nadh."</span>" ?></td>					
 				</tr>
 				<tr>
 					<td>Chèque reçu pour le règlement de :
@@ -73,17 +74,17 @@
 			</table> 
 			</br>
 			<table  class="saisie">
-				<tr>
-					<td>La cotisation au club : </td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td><input id="cotisationP" type="checkbox" name="cotisation" value="" ></td>
-		
-				</tr>
-				<?php
+				<?php 
+					if ($ad->cotisation > 0) {
+						$msg="<tr><td>La cotisation au club : </td>";
+						$msg .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
+						$msg .= "<td><input id='cotisationP' type='checkbox' name='cotisation' value='' ></td></tr>";
+						echo $msg;
+					}
 					$msg="<tr><td></td><td><td></tr>"; 
 					for ($i=0;$i<count($act);$i++) {
-						$msg .= "<tr> <td><label>L'activité : </label></td>";
-						$msg .= "<td> ".$act[$i]." </td>";
+						$msg .= "<tr> <td>L'activité : ".$act[$i]."</td>";
+						$msg .= "<td> </td>";
 						$msg .= "<td> <input type='checkbox' name=".$part[$i]." value='' ></td></tr>";
 					}
 					echo $msg;
