@@ -67,4 +67,12 @@
 	$optionsfin="";
 	for ($i=0;$i<count($fin);$i++) $optionsfin = $optionsfin."<option value=\"$fin[$i]\" >$fin[$i]</option>";
 	//echo "fin de liOptions<br>";
+
+	$optionsj="";
+	for ($i=1;$i<32;$i++) $optionsj = $optionsj."<option value=$i>$i</option>";
+	$mois = ["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+	$optionsm="";
+	for ($i=0;$i<12;$i++) {$i1=$i+1;$optionsm = $optionsm."<option value=$i1>$mois[$i]</option>";}
+	$optionsa="";
+	for ($i=2017;$i<2051;$i++) $optionsa = $optionsa."<option value=$i>$i</option>"; 
 ?>

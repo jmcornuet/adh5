@@ -19,6 +19,25 @@
 		include("menus.php");
 		include("liOptions.php");
 		include("adherents.inc");
+		function putSelected($opt,$sel) {
+			$f=strpos($opt,$sel)+strlen($sel)+1;
+			$s1=substr($opt,0,$f);
+			$s2=substr($opt,$f,strlen($opt));
+			return $s1." selected".$s2;
+		}
+        function putSelected2($opt,$sel) {
+        	if ($sel=='0') return $opt;
+            $f=strpos($opt,$sel)+strlen($sel);
+            $s1=substr($opt,0,$f);
+            $s2=substr($opt,$f,strlen($opt));
+            return $s1." selected".$s2;
+        }
+        function putSelected3($opt,$sel) {
+            $f=strpos($opt,$sel)-1;
+            $s1=substr($opt,0,$f);
+            $s2=substr($opt,$f,strlen($opt));
+            return $s1." selected".$s2;            
+        }
 		$ad = new Adherent;
 		$ad->id = $_POST['id'];//echo $ad->id."<br>";
 		$ad->getadh($tadh);
@@ -26,8 +45,6 @@
 		$nadh = " (".$ad->numMGEN;
 		if ($ad->qualite=="M") $nadh .="M)"; else $nadh .="C)";
 		
-		//echo $ad->activite1."-".$ad->particip1."   ".$ad->activite2."-".$ad->particip2."   ".$ad->activite3."-".$ad->particip3."   ";
-		//echo $ad->activite4."-".$ad->particip4."   ".$ad->activite5."-".$ad->particip5."   ".$ad->activite6."-".$ad->particip6."<br>   ";
         $act=array();$part=array();
 		if ($ad->activite1 != "Pas d'activité") {if ($ad->particip1 != "P") {array_push($act, $ad->activite1);array_push($part,"particip1");}}
 		if ($ad->activite2 != "Pas d'activité") {if ($ad->particip2 != "P") {array_push($act, $ad->activite2);array_push($part,"particip2");}}
@@ -35,11 +52,28 @@
 		if ($ad->activite4 != "Pas d'activité") {if ($ad->particip4 != "P") {array_push($act, $ad->activite4);array_push($part,"particip4");}}
 		if ($ad->activite5 != "Pas d'activité") {if ($ad->particip5 != "P") {array_push($act, $ad->activite5);array_push($part,"particip5");}}
 		if ($ad->activite6 != "Pas d'activité") {if ($ad->particip6 != "P") {array_push($act, $ad->activite6);array_push($part,"particip6");}}
+
+		$an = strftime("%Y");
+		$mo = strtolower(strftime("%B"));
+		$jo =strftime("%d");
+		$optionsj = putSelected2($optionsj,$jo);
+		$optionsm = putSelected3($optionsm,$mo);
+		$optionsa = putSelected2($optionsa,$an);
+
 ?>		
 	<div class="champ">
 		<fieldset class="champemprunteurs">
 			<form name="encAd" action="encAdherent.php" method="post">
 				<input type="hidden" name="idbeneficiaire" value="<?php echo $ad->id ?>">
+			<table class="saise">
+				<tr>
+					<td style="text-align:left">Date du chèque : <!----></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td><select name="jcheque"><?php echo $optionsj ?></select> <td>
+					<td><select name="mcheque"><?php echo $optionsm ?></select> <td>
+					<td><select name="acheque"><?php echo $optionsa ?></select> <td>
+				<tr>
+			</table>
 			<table  class="saisie">
 				<tr> 
 					<td style="width:200px">Montant du chèque : </td>
