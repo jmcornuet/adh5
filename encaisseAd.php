@@ -13,12 +13,51 @@
     <script src="jquery-2.1.4.min.js"></script>
     <script src="jquery.msgBox.js"></script>
     <script src="fonctions.js"></script>
+    <script>
+    	function updatetotal(origine) {
+    		document.getElementById('message').innerHTML=String(origine);
+    		var stotal=document.getElementById('total').innerHTML;stotal=stotal.substr(0,stotal.length-2);
+    		document.getElementById('total').innerHTML="";
+    		var total=Number(stotal);var s="";    		
+     		switch(origine) {
+     			case 0 :  if (document.forms["encAd"]["cotisation"].checked) total = total+Number(document.forms["encAd"]["valcotisation"].value);
+     					  else total = total-Number(document.forms["encAd"]["valcotisation"].value);
+     					  break;
+    			case 1 :  s=document.getElementById("tarif1").innerHTML;s=s.substr(0,s.length-2);
+    			 		  if (document.forms["encAd"]["particip1"].checked) total = total+Number(s);
+    			 		  else total = total-Number(s);
+    			 		  break;
+    			case 2 :  s=document.getElementById("tarif2").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip2"].checked) total = total+Number(s);
+    			 		  else total = total-Number(s);
+    			 		  break;
+    			case 3 :  s=document.getElementById("tarif3").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip3"].checked) total = total+Number(s);
+    			 		  else total = total-Number(s);
+    			 		  break;
+    			case 4 :  s=document.getElementById("tarif4").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip4"].checked)  total = total+Number(s);
+    			 		  else total = total-Number(s);
+    			 		  break;
+    			case 5 :  s=document.getElementById("tarif5").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip5"].checked)  total = total+Number(s);
+    			 		  else total = total-Number(s);
+    			 		  break;
+    			case 6 :  s=document.getElementById("tarif6").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip6"].checked)  total = total+Number(s);
+    			 		  else total = total-Number(s);
+    			 		  break;
+    		}
+    		document.getElementById('total').innerHTML=total+" €";
+    	}
+    </script>
 </head>
 <body onload="resizemenu()" onresize="resizemenu()">
 	<?php 
 		include("menus.php");
 		include("liOptions.php");
 		include("adherents.inc");
+		include("gract.inc");
 		function putSelected($opt,$sel) {
 			$f=strpos($opt,$sel)+strlen($sel)+1;
 			$s1=substr($opt,0,$f);
@@ -38,20 +77,47 @@
             $s2=substr($opt,$f,strlen($opt));
             return $s1." selected".$s2;            
         }
+
+        function tarifAC($n,$qual,$ac,$acs,$tarA,$tarC) {
+        	$trouve=false;$k=0;
+        	while ((!$trouve)&&($k<$n)) {
+        		$trouve = ($ac==$acs[$k]);
+        		if (!$trouve) $k++;
+        	}
+        	if ($qual=="M") $t=$tarA[$k];
+        	else $t=$tarC[$k];
+        	return $t;
+        }
+
 		$ad = new Adherent;
 		$ad->id = $_POST['id'];//echo $ad->id."<br>";
 		$ad->getadh($tadh);
 		$ad->getactivites($tact);
 		$nadh = " (".$ad->numMGEN;
-		if ($ad->qualite=="M") $nadh .="M)"; else $nadh .="C)";
-		
-        $act=array();$part=array();
-		if ($ad->activite1 != "Pas d'activité") {if ($ad->particip1 != "P") {array_push($act, $ad->activite1);array_push($part,"particip1");}}
-		if ($ad->activite2 != "Pas d'activité") {if ($ad->particip2 != "P") {array_push($act, $ad->activite2);array_push($part,"particip2");}}
-		if ($ad->activite3 != "Pas d'activité") {if ($ad->particip3 != "P") {array_push($act, $ad->activite3);array_push($part,"particip3");}}
-		if ($ad->activite4 != "Pas d'activité") {if ($ad->particip4 != "P") {array_push($act, $ad->activite4);array_push($part,"particip4");}}
-		if ($ad->activite5 != "Pas d'activité") {if ($ad->particip5 != "P") {array_push($act, $ad->activite5);array_push($part,"particip5");}}
-		if ($ad->activite6 != "Pas d'activité") {if ($ad->particip6 != "P") {array_push($act, $ad->activite6);array_push($part,"particip6");}}
+		if ($ad->qualite=="M") {$nadh .="M)";$cotisation=12; } else {$nadh .="C)";$cotisation=22;}
+		$ga = new Gracts;
+		$sql = "SELECT * FROM $tact";
+		$ga->cherche($sql);
+		$listact=array();$tarA=array();$tarC=array();
+		for ($i=0;$i<$ga->n;$i++) {
+			array_push($listact,$ga->gract[$i]->activite);
+			array_push($tarA,$ga->gract[$i]->tarifA);
+			array_push($tarC,$ga->gract[$i]->tarifC);
+		}
+		$n=$ga->n;$qual=$ad->qualite;
+        $act=array();$part=array();$tarif=array();$idtarif=array();$idd=array();
+		if ($ad->activite1 != "Pas d'activité") {if ($ad->particip1 != "P") {
+			array_push($act, $ad->activite1);array_push($part,"particip1");array_push($tarif,tarifAC($n,$qual,$ad->activite1,$listact,$tarA,$tarC));array_push($idtarif,"tarif1");array_push($idd,1);}}
+		if ($ad->activite2 != "Pas d'activité") {if ($ad->particip2 != "P") {
+			array_push($act, $ad->activite2);array_push($part,"particip2");array_push($tarif,tarifAC($n,$qual,$ad->activite2,$listact,$tarA,$tarC));array_push($idtarif,"tarif2");array_push($idd,2);}}
+		if ($ad->activite3 != "Pas d'activité") {if ($ad->particip3 != "P") {
+			array_push($act, $ad->activite3);array_push($part,"particip3");array_push($tarif,tarifAC($n,$qual,$ad->activite3,$listact,$tarA,$tarC));array_push($idtarif,"tarif3");array_push($idd,3);}}
+		if ($ad->activite4 != "Pas d'activité") {if ($ad->particip4 != "P") {
+			array_push($act, $ad->activite4);array_push($part,"particip4");array_push($tarif,tarifAC($n,$qual,$ad->activite4,$listact,$tarA,$tarC));array_push($idtarif,"tarif4");array_push($idd,4);}}
+		if ($ad->activite5 != "Pas d'activité") {if ($ad->particip5 != "P") {
+			array_push($act, $ad->activite5);array_push($part,"particip5");array_push($tarif,tarifAC($n,$qual,$ad->activite5,$listact,$tarA,$tarC));array_push($idtarif,"tarif5");array_push($idd,5);}}
+		if ($ad->activite6 != "Pas d'activité") {if ($ad->particip6 != "P") {
+			array_push($act, $ad->activite6);array_push($part,"particip6");array_push($tarif,tarifAC($n,$qual,$ad->activite6,$listact,$tarA,$tarC));array_push($idtarif,"tarif6");array_push($idd,6);}}
 
 		$an = strftime("%Y");
 		$mo = strtolower(strftime("%B"));
@@ -59,7 +125,7 @@
 		$optionsj = putSelected2($optionsj,$jo);
 		$optionsm = putSelected3($optionsm,$mo);
 		$optionsa = putSelected2($optionsa,$an);
-
+		$nact = count($act);
 ?>		
 	<div class="champ">
 		<fieldset class="champemprunteurs">
@@ -67,7 +133,7 @@
 				<input type="hidden" name="idbeneficiaire" value="<?php echo $ad->id ?>">
 			<table class="saise">
 				<tr>
-					<td style="text-align:left">Date du chèque : <!----></td>
+					<td style="text-align:left">Date du chèque : </td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><select name="jcheque"><?php echo $optionsj ?></select> <td>
 					<td><select name="mcheque"><?php echo $optionsm ?></select> <td>
@@ -110,18 +176,28 @@
 			<table  class="saisie">
 				<?php 
 					if ($ad->cotisation > 0) {
-						$msg="<tr><td>La cotisation au club : </td>";
-						$msg .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>";
-						$msg .= "<td><input id='cotisationP' type='checkbox' name='cotisation' value='' ></td></tr>";
+						$cot='cotisation';
+						$msg="<tr><td>La cotisation au club </td><td style='float:right'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cotisation." € </td>";
+						$msg .= "<td><input name='valcotisation' type='hidden' value=$cotisation></td>";
+						$msg .= "<td style='float:right'><input onclick='updatetotal(0)' type='checkbox' name='cotisation' value='' ></td></tr>";
 						echo $msg;
 					}
-					$msg="<tr><td></td><td><td></tr>"; 
-					for ($i=0;$i<count($act);$i++) {
-						$msg .= "<tr> <td>L'activité : ".$act[$i]."</td>";
-						$msg .= "<td> </td>";
-						$msg .= "<td> <input type='checkbox' name=".$part[$i]." value='' ></td></tr>";
+					if ($nact>0) {					
+						$msg="<tr><td></td><td></td></tr>"; 
+						for ($i=0;$i<$nact;$i++) {
+							$msg .= "<tr>";
+							$msg .= "<td>L'activité : ".$act[$i]."</td>";
+							$msg .= "<td style='float:right' id='".$idtarif[$i]."'>".$tarif[$i]." €</td>";
+							$msg .= "<td></td>";
+							$msg .= "<td style='float:right'> <input onclick='updatetotal(".$idd[$i].")' type='checkbox' name='".$part[$i]."' value='' ></td>";
+							$msg .= "</tr>";
+						}
+						echo $msg;
 					}
+					$msg ="<tr><td></td><td></td></tr>";
+					$msg .="<tr><td>Total :</td><td id='total' style='float:right'>0 €<td></tr>";
 					echo $msg;
+					
 				?>
 			</table>
 			<br><br>
@@ -132,7 +208,7 @@
 		</fieldset>
 	</br>
 
-	</div>  
+	</div> 
 	<div id="message"></div>
 </body>
 </html>

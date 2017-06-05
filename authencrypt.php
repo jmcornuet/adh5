@@ -36,6 +36,7 @@ if ($login!="" AND $pass!="") {
 					case "adh" : $_SESSION['tadh'] = $b[1];break;
 					case "ani" : $_SESSION['tani'] = $b[1];break;
 					case "act" : $_SESSION['tact'] = $b[1];break;
+					case "che" : $_SESSION['cheq'] = $b[1];break;
 				}
 			} 
 			fclose($ff);		
@@ -44,7 +45,7 @@ if ($login!="" AND $pass!="") {
 			$_SESSION['nom']=$donnees['nom'];
 			setlocale(LC_TIME, 'fr', 'fr_FR','fr_FR.UTF-8');
 			$_SESSION['debut']=utf8_encode(strftime("%d/%m/%g_%H:%M:%S"));
-			$_SESSION['version'] = "0.0.2";
+			$_SESSION['version'] = "1.0";
 			$M->close();
 		}
 

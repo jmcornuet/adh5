@@ -299,15 +299,39 @@
 		    $M->close();
 		    $nomactivite=$this->arrayunique($nomactivite);
 		    $codactivite=$this->arrayunique($codactivite);
-    		$act=array();$gro=array();$par=array();
+    		$act=array();$gro=array();$par=array();$pp="";
     		if ($this->activite1 != "Pas d'activité") {
     			array_push($act,$this->activite1);array_push($gro,$this->groupe1);array_push($par,$this->particip1);
+    			if (strstr($this->activite1,"Informatique")) $pp .=$this->particip1;
     		}
-    		if ($this->activite2 != "Pas d'activité") {array_push($act,$this->activite2);array_push($gro,$this->groupe2);array_push($par,$this->particip2);}
-    		if ($this->activite3 != "Pas d'activité") {array_push($act,$this->activite3);array_push($gro,$this->groupe3);array_push($par,$this->particip3);}
-    		if ($this->activite4 != "Pas d'activité") {array_push($act,$this->activite4);array_push($gro,$this->groupe4);array_push($par,$this->particip4);}
-    		if ($this->activite5 != "Pas d'activité") {array_push($act,$this->activite5);array_push($gro,$this->groupe5);array_push($par,$this->particip5);}
-    		if ($this->activite6 != "Pas d'activité") {array_push($act,$this->activite6);array_push($gro,$this->groupe6);array_push($par,$this->particip6);}
+    		if ($this->activite2 != "Pas d'activité") {
+    			array_push($act,$this->activite2);array_push($gro,$this->groupe2);array_push($par,$this->particip2);
+    			if (strstr($this->activite2,"Informatique")) $pp .=$this->particip2;
+    		}
+    		if ($this->activite3 != "Pas d'activité") {
+    			array_push($act,$this->activite3);array_push($gro,$this->groupe3);array_push($par,$this->particip3);
+    			if (strstr($this->activite3,"Informatique")) $pp .=$this->particip3;
+    		}
+    		if ($this->activite4 != "Pas d'activité") {
+    			array_push($act,$this->activite4);array_push($gro,$this->groupe4);array_push($par,$this->particip4);
+    			if (strstr($this->activite4,"Informatique")) $pp .=$this->particip4;
+    		}
+    		if ($this->activite5 != "Pas d'activité") {
+    			array_push($act,$this->activite5);array_push($gro,$this->groupe5);array_push($par,$this->particip5);
+    			if (strstr($this->activite5,"Informatique")) $pp .=$this->particip5;
+    		}
+    		if ($this->activite6 != "Pas d'activité") {
+    			array_push($act,$this->activite6);array_push($gro,$this->groupe6);array_push($par,$this->particip6);
+    			if (strstr($this->activite6,"Informatique")) $pp .=$this->particip6;
+    		}
+    		if (strstr($pp,"P")) {
+    			if (strstr($this->activite1,"Informatique")) $par[0]="P";
+    			if (strstr($this->activite2,"Informatique")) $par[1]="P";
+    			if (strstr($this->activite3,"Informatique")) $par[2]="P";
+    			if (strstr($this->activite4,"Informatique")) $par[3]="P";
+    			if (strstr($this->activite5,"Informatique")) $par[4]="P";
+    			if (strstr($this->activite6,"Informatique")) $par[5]="P";
+    		}
     		//print_r($act);echo"<br>";
     		//print_r($gro);echo"<br>";
     		//print_r($par);echo"<br>";
@@ -388,7 +412,22 @@
 	    						 $this->particip6 = $p; 
 	    						 break;
 	    			}
-	    		}	    	
+	    		}
+	    		$pp="";
+	    		if (strstr($this->activite1,"Informatique")) $pp .=$this->particip1;
+	    		if (strstr($this->activite2,"Informatique")) $pp .=$this->particip2;
+	    		if (strstr($this->activite3,"Informatique")) $pp .=$this->particip3;
+	    		if (strstr($this->activite4,"Informatique")) $pp .=$this->particip4;
+	    		if (strstr($this->activite5,"Informatique")) $pp .=$this->particip5;
+	    		if (strstr($this->activite6,"Informatique")) $pp .=$this->particip6;
+	    		if (strstr($pp,"P")) {
+		    		if (strstr($this->activite1,"Informatique")) $this->particip1="P";
+		    		if (strstr($this->activite2,"Informatique")) $this->particip2="P";
+		    		if (strstr($this->activite3,"Informatique")) $this->particip3="P";
+		    		if (strstr($this->activite4,"Informatique")) $this->particip4="P";
+		    		if (strstr($this->activite5,"Informatique")) $this->particip5="P";
+		    		if (strstr($this->activite6,"Informatique")) $this->particip6="P";
+	    		}
 	    	}
     	}
 	}

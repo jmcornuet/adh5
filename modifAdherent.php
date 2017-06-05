@@ -28,7 +28,16 @@
         $ad->activite5=getoption($optionsactivite,$ad->activite5);
         $ad->activite6=getoption($optionsactivite,$ad->activite6);
         $ad->getcodes($tact);
-	    if ($ad->modifie($tadh)) echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom a bien été modifiée dans la base de données </div>";
+	    if ($ad->modifie($tadh)) {
+            echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom a bien été modifiée dans la base de données </div>";
+            echo "<br><br>";
+            $mes  = '<form name="formencaisse" method="post" action="encaisseAd.php">';
+            $mes .= '<input type="hidden" name="id" value='.$ad->id.' >';
+            $mes .= '<input class="bouton" type=submit value="ENCAISSER">';
+            $mes = $mes.'</form>';
+            echo $mes; 
+
+        }
 	    else echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom n'a pas pu être modifiée dans la base de données !!!</div>";
 	?>
 </body>
