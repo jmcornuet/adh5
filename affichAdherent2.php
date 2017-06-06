@@ -153,8 +153,12 @@
 					<td><label for="numeroSS">Numéro S.S. : </label>  </td>
 					<td><input id="numeroSS" type="text" name="numeroSS" size=25 value="<?php echo $ad->numeroSS ?>" ></td>
 					<td><label for="cotisation">Cotisation : </label></td></td>
-					<td><input id="cotisationP" type="radio" name="cotisation" value=0 <?php if ($ad->cotisation=='0') echo "checked" ?> >A jour &nbsp;&nbsp;&nbsp;
-					<input id="cotisationA" type="radio" name="cotisation" value=1 <?php if ($ad->cotisation!='0') echo "checked" ?>>En attente </td>
+					<td><?php 
+							if ($ad->cotisation=='0') echo "<span style='color:green;font-weight: bold'> A JOUR</span>";
+							else  echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>"; 
+						?> 
+						<input name="cotisation" type=hidden value="<?php echo $ad->cotisation ?>" >
+					</td>
 				</tr>
 				<tr>					
 					<td> </td>			
@@ -167,35 +171,65 @@
 			</br></br>
 			<table class="saisie">
 				<tr>
-					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>     </th><th>Activité</th><th>Groupe</th><th>Réglée     </th>
+					<th>Activité</th><th>Groupe</th><th>Réglement</th><th>     </th><th>Activité</th><th>Groupe</th><th>Réglement     </th>
 				</tr>
 				<tr>
 
 					<td><select name="activite1"  class="selectoption"><?php echo $optionsactivite1 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;<select name="groupe1" class="selectoption"><?php echo $optionsgroupe1 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip1" value="" <?php echo $particip1 ?> ></td>
+					<td>&nbsp;&nbsp;&nbsp;<select name="groupe1" class="selectoption"><?php echo $optionsgroupe1 ?></select></td>;
+					<?php 
+						if ($ad->activite1 != "Pas d'activité") {
+							if ($particip1=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
+							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+						} ?>
+					<input name="particip1" type="hidden" value="<?php echo $ad->particip1; ?>" >
 					<td></td>
 					<td><select  name="activite4" class="selectoption"><?php echo $optionsactivite4 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe4" class="selectoption"><?php echo $optionsgroupe4 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip4" value="" <?php echo $particip4 ?> ></td>
+					<td>&nbsp;&nbsp;&nbsp;<select name="groupe4" class="selectoption"><?php echo $optionsgroupe4 ?></select></td>
+					<?php
+						if ($ad->activite4 != "Pas d'activité") {
+							if ($particip4=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
+							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+						} ?>
+					<input name="particip4" type="hidden" value="<?php echo $ad->particip4; ?>" >
 				</tr>			
 				<tr>
 					<td><select name="activite2" class="selectoption"><?php echo $optionsactivite2 ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe2" class="selectoption"><?php echo $optionsgroupe2 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip2" value="" <?php echo $particip2 ?> ></td>
+					<?php
+						if ($ad->activite2 != "Pas d'activité") {
+							if ($particip2=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
+							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+						} ?>
+					<input name="particip2" type="hidden" value="<?php echo $ad->particip2; ?>" >
 					<td></td>
 					<td><select  name="activite5" class="selectoption"><?php echo $optionsactivite5 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe5" class="selectoption"><?php echo $optionsgroupe5 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip5" value="" <?php echo $particip5 ?> ></td>
+					<td>&nbsp;&nbsp;&nbsp;<select name="groupe5" class="selectoption"><?php echo $optionsgroupe5 ?></select></td>
+					<?php
+						if ($ad->activite5 != "Pas d'activité") {
+							if ($particip5=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
+							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+						} ?>
+					<input name="particip5" type="hidden" value="<?php echo $ad->particip5; ?>" >
 				</tr>			
 				<tr>
 					<td><select name="activite3" class="selectoption"><?php echo $optionsactivite3 ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe3" class="selectoption"><?php echo $optionsgroupe3 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip3" value="" <?php echo $particip3 ?> ></td>
+					<?php
+						if ($ad->activite3 != "Pas d'activité") {
+							if ($particip3=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
+							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+						} ?>
+					<input name="particip3" type="hidden" value="<?php echo $ad->particip3; ?>" >
 					<td></td>
 					<td><select  name="activite6" class="selectoption"><?php echo $optionsactivite6 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe6" class="selectoption"><?php echo $optionsgroupe6 ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip6" value="" <?php echo $particip6 ?> ></td>
+					<td>&nbsp;&nbsp;&nbsp;<select name="groupe6" class="selectoption"><?php echo $optionsgroupe6 ?></select></td>
+					<?php
+						if ($ad->activite6 != "Pas d'activité") {
+							if ($particip6=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
+							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+						} ?>
+					<input name="particip6" type="hidden" value="<?php echo $ad->particip6; ?>" >
 				</tr>
 				<tr><td><input type="hidden" name="affich" value="on"</td></tr>
 				<tr>

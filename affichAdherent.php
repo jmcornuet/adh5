@@ -13,7 +13,7 @@
     <script src="jquery-2.1.4.min.js"></script>
     <script src="jquery.msgBox.js"></script>
     <script src="fonctions.js"></script>
-    <script>
+    <script type="text/javascript">
 		jQuery(document).ready(function(){
   			console.log("jQuery est prêt !");
 		});  		
@@ -39,6 +39,16 @@
 		        	}
 		        }
 		    });
+		}
+		function goencaisse(id) {
+			var formul = document.createElement('form');
+			formul.setAttribute('action','encaisseAd.php');
+			formul.setAttribute('method','post');
+			var input0 = document.createElement('input');
+			input0.setAttribute('type','hidden');input0.setAttribute('name','id');input0.setAttribute('value',id);
+			formul.appendChild(input0);
+			document.body.appendChild(formul);
+			formul.submit();
 		}
     </script>
 </head>
@@ -93,6 +103,8 @@
 		$optionsgroupe4 = putSelected2($optionsgroupe,$ad->groupe4);
 		$optionsgroupe5 = putSelected2($optionsgroupe,$ad->groupe5);
 		$optionsgroupe6 = putSelected2($optionsgroupe,$ad->groupe6);
+
+		$nencaisse=0;
 ?>		
 	<div class="champ">
 		<fieldset class="champemprunteurs" >
@@ -100,7 +112,7 @@
 				<input type="hidden" name="id" value="<?php echo $ad->id ?>">
 			<table  class="saisie">
 				<tr>
-					<td style="color:blue"> <?php if ($ad->titre=="M.") echo "Monsieur";else echo "Madame" ?></td>
+					<td style="color:blue"> <?php if ($ad->titre=="M.") echo "Monsieur";else echo "Madame";echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" ?></td>
 					<td> </td>
 					<td><label for="nom">Nom : </label></td>
 					<td style="color:blue"><?php echo $ad->nom ?> </td>
@@ -130,8 +142,12 @@
 					<td> </td><td> </td>			
 					<td><label for "adresse">Adresse :</label></td>
 					<td style="color:blue"><?php echo $ad->adresse ?></td>
-					<td><label for "compadresse">Complément :</label></td>
-					<td style="color:blue"><?php echo $ad->compadresse ?></td>
+					<?php 
+						if ($ad->compadresse !="") {
+							echo '<td><label for "compadresse">Complément :</label></td>';
+							echo '<td style="color:blue"><?php echo $ad->compadresse ?></td>';
+						}
+					?>
 				</tr>
 				<tr>					
 					<td> </td><td> </td>			
@@ -161,7 +177,7 @@
 					<td><label for="cotisation">Cotisation : </label></td></td>
 					<td><?php 
 							if ($ad->cotisation=='0') echo "<span style='color:green;font-weight: bold'> A JOUR</span>";
-							else  echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>"; 
+							else  {echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>";$nencaisse++;} 
 						?> 
 					</td>
 				</tr>
@@ -176,53 +192,58 @@
 			</br></br>
 			<table class="saisie">
 				<tr>
-					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>     </th><th>Activité</th><th>Groupe</th><th>Réglée     </th>
+					<th>Activité</th><th>Groupe</th><th>Réglement</th><th>     </th><th>Activité</th><th>Groupe</th><th>Réglement     </th>
 				</tr>
 				<tr>
 
-					<td><?php echo $ad->activite1 ?></td>
 					<?php if ($ad->activite1 != "Pas d'activité") {
+						echo "<td>$ad->activite1</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe1</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						if ($particip1=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else echo "<span style='color:red '>EN ATTENTE</span></td>";
-					} ?>
+						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+					}  else echo "<td></td><td></td><td></td>" ?>
 					<td></td>
-					<td><?php echo $ad->activite4 ?></td>
+					
 					<?php if ($ad->activite4 != "Pas d'activité") {
+						echo "<td>$ad->activite4</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe4</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						if ($particip4=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else echo "<span style='color:red '>EN ATTENTE</span></td>";
-					} ?>
+						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+					}  else echo "<td></td><td></td><td></td>" ?>
 				</tr>			
 				<tr>
-					<td><?php echo $ad->activite2 ?></td>
+					
 					<?php if ($ad->activite2 != "Pas d'activité") {
+						echo "<td>$ad->activite2</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe2</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						if ($particip2=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else echo "<span style='color:red '>EN ATTENTE</span></td>";
-					} ?>
+						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+					} else echo "<td></td><td></td><td></td>" ?>
 					<td></td>
-					<td><?php echo $ad->activite5 ?></td>
+					
 					<?php if ($ad->activite5 != "Pas d'activité") {
+						echo "<td>$ad->activite5</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe5</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						if ($particip5=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else echo "<span style='color:red '>EN ATTENTE</span></td>";
-					} ?>
+						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+					}  else echo "<td></td><td></td><td></td>" ?>
 				</tr>			
 				<tr>
-					<td><?php echo $ad->activite3 ?></td>
+					
 					<?php if ($ad->activite3 != "Pas d'activité") {
+						echo "<td>$ad->activite3</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe3</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						if ($particip3=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else echo "<span style='color:red '>EN ATTENTE</span></td>";
-					} ?>
+						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+					}  else echo "<td></td><td></td><td></td>" ?>
 					<td></td>
-					<td><?php echo $ad->activite6 ?></td>
+					
 					<?php if ($ad->activite6 != "Pas d'activité") {
+						echo "<td>$ad->activite6</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe6</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						if ($particip6=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else echo "<span style='color:red '>EN ATTENTE</span></td>";
-					} ?>
+						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+					}  else echo "<td></td><td></td><td></td>" ?>
 				</tr>
 				<tr><td> </td></tr>
 				<tr>
@@ -235,9 +256,11 @@
 
 			</table>
 			</form>
+			<?php 
+				if ($nencaisse>0) echo '<button class="bouton"  onclick="goencaisse('.$ad->id.')">ENCAISSER</button>';
+			?>
 			
 			<button id="bouton1" class="bouton"  onclick="imprim(<?php echo $ad->id ?>)">IMPRIMER</button>
-
 		</fieldset>
 	</br>
 

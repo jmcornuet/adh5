@@ -191,12 +191,14 @@
 			if ($this->courriel != $donnees['courriel']) $sql .=" courriel='$this->courriel',";
 			if ($this->sortie != $donnees['sortie']) $sql .=" sortie='$this->sortie',";
 			if ($this->prenomnom != $donnees['prenomnom']) $sql .=" prenomnom='$this->prenomnom',";
-	    	$sql=substr($sql,0,-1)." WHERE id=$this->id";
-	    	//echo $sql;
-		    $reponse=$M->querydb($sql);
-		    if (($filemodif)&&($reponse)) writefileadh($tadh);
-		    $M->close();
-		 	return $reponse;
+			if ($sql != "UPDATE $tadh SET") {
+		    	$sql=substr($sql,0,-1)." WHERE id=$this->id";
+		    	//echo $sql;
+			    $reponse=$M->querydb($sql);
+			    if (($filemodif)&&($reponse)) writefileadh($tadh);
+			    $M->close();
+			 	return $reponse;
+			 } else return true;
 		}
 		public function insere($tadh) {
 			$MM = new MConf;
@@ -211,6 +213,7 @@
 	    	$this->profession = addslashes($this->profession);
 	    	$this->specialite = addslashes($this->specialite);
 	    	$this->prenomnom = $this->prenom." ".$this->nom;
+	    	$this->cotisation = 1;
 	    	//echo $this->activites."<br>";
 	    	$sql0 = "INSERT INTO $tadh (";
 	    	$sql1 = " VALUES (";
@@ -230,7 +233,7 @@
 	    	$sql0=substr($sql0,0,-1).")";
 	    	$sql1=substr($sql1,0,-1).")";
 			$sql=$sql0.$sql1;
-			//echo $sql."<br>";
+			echo $sql."<br>";
 		    $retour=$MM->querydb($sql);
 		    if ($retour) writefileadh($tadh);
 			$this->id=$MM->lastId($tadh);
@@ -272,6 +275,13 @@
 			$this->groupe4=$_POST['groupe4'];
 			$this->groupe5=$_POST['groupe5'];
 			$this->groupe6=$_POST['groupe6'];
+			$this->particip1=$_POST['particip1'];
+			$this->particip2=$_POST['particip2'];
+			$this->particip3=$_POST['particip3'];
+			$this->particip4=$_POST['particip4'];
+			$this->particip5=$_POST['particip5'];
+			$this->particip6=$_POST['particip6'];
+/*
 			if (isset($_POST['p1p'])) $this->particip1="P"; else if (isset($_POST['p1a'])) $this->particip1="A";else $this->particip1="";
 			if (isset($_POST['p2p'])) $this->particip2="P"; else if (isset($_POST['p2a'])) $this->particip2="A";else $this->particip2="";
 			if (isset($_POST['p3p'])) $this->particip3="P"; else if (isset($_POST['p3a'])) $this->particip3="A";else $this->particip3="";
@@ -286,7 +296,7 @@
 				if (isset($_POST['particip5'])) $this->particip5="P";else $this->particip5="A";
 				if (isset($_POST['particip6'])) $this->particip6="P";else $this->particip6="A";
 			}
-		}
+*/		}
 		public function getcodes($tact) {
 			$M = new MConf;
 		 	$sql = "SELECT * FROM $tact";

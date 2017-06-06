@@ -77,9 +77,8 @@
 					<td> </td>			
 					<td><label for="numeroSS">Numéro S.S. : </label>  </td>
 					<td><input id="numeroSS" type="text" name="numeroSS" size=25 ></td>
-					<td><label for="cotisation">Cotisation : </label></td></td>
-					<td><input type="radio" name="cotisation" id="cotisationP" value=0>A jour &nbsp;&nbsp;&nbsp;
-					<input type="radio" name="cotisation" id="cotisationA" value=1>En attente </td>
+					<td></td></td>
+					<td></td>
 					<td></td>
 					<td></td>
 				</tr>

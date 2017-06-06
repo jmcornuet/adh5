@@ -178,7 +178,7 @@ function valide() {
 	var a=document.forms["nouvelAd"]["profession"].selectedIndex;
 	if (a==0) {msg+="- la profession</br>";nb++;}
 		document.getElementById("message").innerHTML="nb ="+nb;
-	if ((!document.forms["nouvelAd"]["cotisationP"].checked)&&(!document.forms["nouvelAd"]["cotisationA"].checked)) {msg+="- l'état de la cotisation</br>";nb++;}
+	//if ((!document.forms["nouvelAd"]["cotisationP"].checked)&&(!document.forms["nouvelAd"]["cotisationA"].checked)) {msg+="- l'état de la cotisation</br>";nb++;}
 	if (nb>0) {
 	    $.msgBox({
     		title:"Création d'une fiche Adhérent",
