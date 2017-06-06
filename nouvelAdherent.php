@@ -92,35 +92,29 @@
 			</table>
 			<table class="saisie">
 				<tr>
-					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>     </th><th>Activité</th><th>Groupe</th><th>Réglée     </th>
+					<th>Activité</th><th>Groupe</th><th>     </th><th>Activité</th><th>Groupe</th>
 				</tr>
 
 				<tr>
 					<td><select name="activite1"  class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe1" class="selectoption"><?php echo $optionsgroupe ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip1" value="" <?php echo $particip1 ?> ></td>
 					<td></td>
 					<td><select  name="activite4" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe4" class="selectoption"><?php echo $optionsgroupe ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip4" value="" <?php echo $particip4 ?> ></td>
 				</tr>			
 				<tr>
 					<td><select name="activite2" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe2" class="selectoption"><?php echo $optionsgroupe ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip2" value="" <?php echo $particip2 ?> ></td>
 					<td></td>
 					<td><select  name="activite5" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe5" class="selectoption"><?php echo $optionsgroupe ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip5" value="" <?php echo $particip5 ?> ></td>
 				</tr>			
 				<tr>
 					<td><select name="activite3" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe3" class="selectoption"><?php echo $optionsgroupe ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip3" value="" <?php echo $particip3 ?> ></td>
 					<td></td>
 					<td><select  name="activite6" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe6" class="selectoption"><?php echo $optionsgroupe ?></select></td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="particip6" value="" <?php echo $particip6 ?> ></td>
 				</tr>
 				<tr><td><input type="hidden" name="affich" value="on"</td></tr>
 			</table>

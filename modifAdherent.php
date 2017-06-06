@@ -28,7 +28,7 @@
         $ad->activite5=getoption($optionsactivite,$ad->activite5);
         $ad->activite6=getoption($optionsactivite,$ad->activite6);
         $ad->getcodes($tact);
-        echo $ad->activites."<br>";
+        //echo $ad->activites."<br>";
 	    if ($ad->modifie($tadh)) {
             echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom a bien été modifiée dans la base de données </div>";
             echo "<br><br>";
