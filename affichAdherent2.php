@@ -40,6 +40,16 @@
 		        }
 		    });
 		}
+		function goencaisse(id) {
+			var formul = document.createElement('form');
+			formul.setAttribute('action','encaisseAd.php');
+			formul.setAttribute('method','post');
+			var input0 = document.createElement('input');
+			input0.setAttribute('type','hidden');input0.setAttribute('name','id');input0.setAttribute('value',id);
+			formul.appendChild(input0);
+			document.body.appendChild(formul);
+			formul.submit();
+		}
     </script>
 </head>
 <body onload="resizemenu()" onresize="resizemenu()">
@@ -92,6 +102,8 @@
 		$optionsgroupe4 = putSelected2($optionsgroupe,$ad->groupe4);
 		$optionsgroupe5 = putSelected2($optionsgroupe,$ad->groupe5);
 		$optionsgroupe6 = putSelected2($optionsgroupe,$ad->groupe6);	
+
+		$nencaisse=0;
 ?>		
 	<div class="champ">
 		<fieldset class="champemprunteurs">
@@ -155,7 +167,7 @@
 					<td><label for="cotisation">Cotisation : </label></td></td>
 					<td><?php 
 							if ($ad->cotisation=='0') echo "<span style='color:green;font-weight: bold'> A JOUR</span>";
-							else  echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>"; 
+							else  {echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>";$nencaisse++;} 
 						?> 
 						<input name="cotisation" type=hidden value="<?php echo $ad->cotisation ?>" >
 					</td>
@@ -180,7 +192,7 @@
 					<?php 
 						if ($ad->activite1 != "Pas d'activité") {
 							if ($particip1=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip1" type="hidden" value="<?php echo $ad->particip1; ?>" >
 					<td></td>
@@ -189,7 +201,7 @@
 					<?php
 						if ($ad->activite4 != "Pas d'activité") {
 							if ($particip4=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						} else echo "<td> </td>" ?>
 					<input name="particip4" type="hidden" value="<?php echo $ad->particip4; ?>" >
 				</tr>			
@@ -199,7 +211,7 @@
 					<?php
 						if ($ad->activite2 != "Pas d'activité") {
 							if ($particip2=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip2" type="hidden" value="<?php echo $ad->particip2; ?>" >
 					<td></td>
@@ -208,7 +220,7 @@
 					<?php
 						if ($ad->activite5 != "Pas d'activité") {
 							if ($particip5=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip5" type="hidden" value="<?php echo $ad->particip5; ?>" >
 				</tr>			
@@ -218,7 +230,7 @@
 					<?php
 						if ($ad->activite3 != "Pas d'activité") {
 							if ($particip3=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip3" type="hidden" value="<?php echo $ad->particip3; ?>" >
 					<td></td>
@@ -227,7 +239,7 @@
 					<?php
 						if ($ad->activite6 != "Pas d'activité") {
 							if ($particip6=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else echo "<td><span style='color:red '>EN ATTENTE</span></td>";
+							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip6" type="hidden" value="<?php echo $ad->particip6; ?>" >
 				</tr>
@@ -243,6 +255,9 @@
 			</table>
 					<input id="go" type="hidden"  value="CONFIRMER">
 			</form>
+			<?php 
+				if ($nencaisse>0) echo '<button class="bouton"  onclick="goencaisse('.$ad->id.')">ENCAISSER</button>';
+			?>
 			
 			<button id="bouton0" class="bouton"  onclick="valide()">MODIFIER</button> 
 	<!--		<button id="bouton1" class="bouton"  onclick="imprim(<?php echo $ad->id ?>)">IMPRIMER</button> -->
