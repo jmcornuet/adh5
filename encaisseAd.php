@@ -126,6 +126,7 @@
 		$optionsm = putSelected3($optionsm,$mo);
 		$optionsa = putSelected2($optionsa,$an);
 		$nact = count($act);
+		if ($nact+$ad->cotisation!= 0) {
 ?>		
 	<div class="champ">
 		<fieldset class="champemprunteurs">
@@ -152,7 +153,7 @@
 				<tr>
 				<tr>
 					<td>Banque : </td>
-					<td><input name="banque" type="text" size=30><td>
+					<td><select name="banque"><?php echo $optionsbanque ?></select></td>
 				<tr>
 				<tr>
 					<td>Titulaire(s) du chèque<sup>*</sup> : </td>
@@ -160,6 +161,11 @@
 				</tr>
 				<tr>
 					<td style="font-size:70%"><sup>*</sup>Si différent de l'adhérent concerné</span></td>
+				</tr>
+				<tr>
+					<td>Observations : </td>
+					<td><input name="observations" type="text" size=30><td>
+
 				</tr>
 
 			</table>
@@ -207,8 +213,12 @@
 			<button id="bouton0" class="bouton"  onclick="validecheque()">VALIDER</button> 
 		</fieldset>
 	</br>
-
 	</div> 
 	<div id="message"></div>
+<?php
+	} else {
+		echo "</br></br><div class='alerte'> $ad->titre $ad->prenom $ad->nom est à jour pour son adhésion et ses éventuelles activités.   </div>";
+	}
+?>
 </body>
 </html>

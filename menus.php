@@ -15,6 +15,9 @@
 	<ul class="niveau1">
 		<li>
 			<a href="club0.php">Accueil</a>
+			<ul>
+				<li><a href="planningAccueil.php" target="_blank">Planning de l'accueil</a></li>				
+			</ul>
 		</li>
 		<li>
 			<a href="#">Adhérents</a>
@@ -51,7 +54,6 @@
 			<a href="#">Outils</a>
 			<ul>
 				<li><a href="planning.php">Planning des salles</a></li>
-				<li><a href="planningAccueil.php" target="_blank">Planning de l'accueil</a></li>
 				<li><a href="participants.php">Participants</a></li>
 				<li><a href="listepresence.php">Liste de présence</a></li>
 				<li><a href="imprimpartfi.php" target="_blank">Participation financière</a></li>
