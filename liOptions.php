@@ -50,7 +50,7 @@
 	$optionsgroupe1="";
 	for ($i=1;$i<16;$i++) $optionsgroupe1 = $optionsgroupe1."<option value=$i>$i</option>";
 
-	$banque=["Banque Populaire","BNP Paribas","Caisse d'Epargne","CIC","Crédit Agricole","Crédit du Nord","Crédit Mutuel","La Banque Postale","LCL/e.LCL","Société Générale","Autre"];
+	$banque=["Banque Populaire","BNP Paribas","Caisse d'Epargne","CIC","Crédit Agricole","Crédit du Nord","Crédit Mutuel","HSBC", "La Banque Postale","LCL/e.LCL","Société Générale","Autre"];
 	$optionsbanque="";
 	for ($i=0;$i<count($banque);$i++) $optionsbanque .="<option value=\"$banque[$i]\" >$banque[$i]</option>";
 

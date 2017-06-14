@@ -128,42 +128,38 @@
 		$nact = count($act);
 		if ($nact+$ad->cotisation!= 0) {
 ?>		
+	<div class="titre1">Encaissement d'un chèque</div>
 	<div class="champ">
 		<fieldset class="champemprunteurs">
 			<form name="encAd" action="encAdherent.php" method="post">
 				<input type="hidden" name="idbeneficiaire" value="<?php echo $ad->id ?>">
 			<table class="saise">
 				<tr>
-					<td style="text-align:left">Date du chèque : </td>
-					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td><select name="jcheque"><?php echo $optionsj ?></select> <td>
-					<td><select name="mcheque"><?php echo $optionsm ?></select> <td>
-					<td><select name="acheque"><?php echo $optionsa ?></select> <td>
+					<td style="text-align:right">Date du chèque : </td>
+					<td><select name="jcheque"><?php echo $optionsj ?></select> 
+					<select name="mcheque"><?php echo $optionsm ?></select> 
+					<select name="acheque"><?php echo $optionsa ?></select> <td>
 				<tr>
-			</table>
-			<table  class="saisie">
 				<tr> 
-					<td style="width:200px">Montant du chèque : </td>
+					<td style="width:200px;text-align:right">Montant du chèque : </td>
 					<td><input name="montant" type="text" size=30></td>
 					<td>euros</td>
 				</tr>
 				<tr>
-					<td>Numéro du chèque : </td>
+					<td style="text-align:right">Numéro du chèque : </td>
 					<td><input name="numcheque" type="text" size=30><td>
 				<tr>
 				<tr>
-					<td>Banque : </td>
+					<td style="text-align:right">Banque : </td>
 					<td><select name="banque"><?php echo $optionsbanque ?></select></td>
 				<tr>
 				<tr>
-					<td>Titulaire(s) du chèque<sup>*</sup> : </td>
+					<td style="text-align:right">Titulaire(s) du chèque<sup>*</sup> : </td>
 					<td><input name="titulaire" type="text" size=30><td>
+					<td style="font-size:70%;text-align:left"><sup>*</sup>Si différent de l'adhérent concerné</span></td>
 				</tr>
 				<tr>
-					<td style="font-size:70%"><sup>*</sup>Si différent de l'adhérent concerné</span></td>
-				</tr>
-				<tr>
-					<td>Observations : </td>
+					<td style="text-align:right">Observations : </td>
 					<td><input name="observations" type="text" size=30><td>
 
 				</tr>
@@ -172,7 +168,7 @@
 			<br><br>
 			<table  class="saisie">
 				<tr>
-					<td>Adhérent concerné : <?php echo "<span style='font-size:130%'>".$ad->prenomnom.$nadh."</span>" ?></td>					
+					<td>Adhérent concerné : <?php echo "<span style='font-size:130%;color:blue'>".$ad->prenomnom.$nadh."</span>" ?></td>					
 				</tr>
 				<tr>
 					<td>Chèque reçu pour le règlement de :
@@ -189,7 +185,7 @@
 						echo $msg;
 					}
 					if ($nact>0) {					
-						$msg="<tr><td></td><td></td></tr>"; 
+						if ($ad->cotisation > 0) $msg="<tr><td></td><td></td></tr>"; 
 						for ($i=0;$i<$nact;$i++) {
 							$msg .= "<tr>";
 							$msg .= "<td>L'activité : ".$act[$i]."</td>";
