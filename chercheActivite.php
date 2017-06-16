@@ -54,7 +54,7 @@
 					<td></td>
 				</tr>
 			</table>
-			<table>
+			<table class="saisie">
 				<tr>
 					<td></td>
 					<td style="float:right">Participation adhérent:</td>
