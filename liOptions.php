@@ -34,7 +34,7 @@
         $c=substr($b,0,strpos($b,"<"));
         return $c;
     }
-    if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh/"; 
+    if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh1/"; 
 	$optionsactiv=file_get_contents($basedir."listact.txt");
     $optionsactivite="<option value=0>Pas d'activité</option>".$optionsactiv;
     $optionspersonne=file_get_contents($basedir."listadh.txt");

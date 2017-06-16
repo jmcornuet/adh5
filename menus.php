@@ -45,7 +45,7 @@
 				<li><a href="chercheAnimateur.php">Chercher</a></li>
 				<li><a href="modifierAnimateur.php">Modifier</a></li>
 				<?php
-					if ($niveau>1) echo '<li><a href="#" style="background-color:#ED1E55">Créer</a></li>';
+					if ($niveau>3) echo '<li><a href="#" style="background-color:#ED1E55">Créer</a></li>';
 					else echo '<li><a href="nouvelAnimateur.php">Créer</a></li>';
 				?>				
 			</ul>

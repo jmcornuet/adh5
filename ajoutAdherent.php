@@ -26,8 +26,10 @@
         $ad->activite6=getoption($optionsactivite,$ad->activite6);
 	    $ad->getcodes($tact);
 	    $OK=$ad->insere($tadh);
-	    if ($OK) echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom a été ajoutée à la base de données avec l'id $ad->id </div>";
-	    else echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom n'a pas pu être ajoutée à la base de données !!!</div>";
+	    if ($OK) {
+            echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom a été ajoutée à la base de données avec l'id $ad->id </div>";
+            echo '<br><br><button class="bouton"  onclick="goencaisse('.$ad->id.')">ENCAISSER</button>';
+        } else echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom n'a pas pu être ajoutée à la base de données !!!</div>";
 
 	?>
 </body>

@@ -1,6 +1,6 @@
 <?php
 	require_once("MGENconfig.php");
-	if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh/";
+	if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh1/";
     function transprenom($p) {
         $fp=explode(" ",$p);
         for ($j=0;$j<count($fp);$j++) {
@@ -233,7 +233,7 @@
 	    	$sql0=substr($sql0,0,-1).")";
 	    	$sql1=substr($sql1,0,-1).")";
 			$sql=$sql0.$sql1;
-			echo $sql."<br>";
+			//echo $sql."<br>";
 		    $retour=$MM->querydb($sql);
 		    if ($retour) writefileadh($tadh);
 			$this->id=$MM->lastId($tadh);

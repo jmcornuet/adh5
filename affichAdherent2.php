@@ -179,8 +179,7 @@
 					<td><label for="sortie">Sortie du club : </label></td>
 					<td><input type="text" size=30 name="sortie" value="<?php echo $ad->sortie ?>" ></td>
 				</tr>
-			</table> 
-			<br><br>
+			</table>
 			<table class="saisie">
 				<tr>
 					<th>Activité</th><th>Groupe</th><th>Réglement</th><th>     </th><th>Activité</th><th>Groupe</th><th>Réglement     </th>
@@ -192,7 +191,7 @@
 					<?php 
 						if ($ad->activite1 != "Pas d'activité") {
 							if ($particip1=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+							else {echo "<td><span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip1" type="hidden" value="<?php echo $ad->particip1; ?>" >
 					<td></td>
@@ -201,7 +200,7 @@
 					<?php
 						if ($ad->activite4 != "Pas d'activité") {
 							if ($particip4=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+							else {echo "<td><span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						} else echo "<td> </td>" ?>
 					<input name="particip4" type="hidden" value="<?php echo $ad->particip4; ?>" >
 				</tr>			
@@ -211,7 +210,7 @@
 					<?php
 						if ($ad->activite2 != "Pas d'activité") {
 							if ($particip2=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+							else {echo "<td><span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip2" type="hidden" value="<?php echo $ad->particip2; ?>" >
 					<td></td>
@@ -220,7 +219,7 @@
 					<?php
 						if ($ad->activite5 != "Pas d'activité") {
 							if ($particip5=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+							else {echo "<td><span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip5" type="hidden" value="<?php echo $ad->particip5; ?>" >
 				</tr>			
@@ -230,7 +229,7 @@
 					<?php
 						if ($ad->activite3 != "Pas d'activité") {
 							if ($particip3=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+							else {echo "<td><span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip3" type="hidden" value="<?php echo $ad->particip3; ?>" >
 					<td></td>
@@ -239,7 +238,7 @@
 					<?php
 						if ($ad->activite6 != "Pas d'activité") {
 							if ($particip6=="checked") echo "<td><span style='color:green'>A JOUR</span></td>";
-							else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+							else {echo "<td><span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 						}  else echo "<td> </td>" ?>
 					<input name="particip6" type="hidden" value="<?php echo $ad->particip6; ?>" >
 				</tr>
@@ -256,7 +255,7 @@
 					<input id="go" type="hidden"  value="CONFIRMER">
 			</form>
 			<?php 
-				if ($nencaisse>0) echo '<button class="bouton"  onclick="goencaisse('.$ad->id.')">ENCAISSER</button>';
+//				if ($nencaisse>0) echo '<button class="bouton"  onclick="goencaisse('.$ad->id.')">ENCAISSER</button>';
 			?>
 			
 			<button id="bouton0" class="bouton"  onclick="valide()">MODIFIER</button> 

@@ -20,8 +20,8 @@
     	function imprim(id) {
 			jQuery.msgBox({ type: "confirm",
 				title: "Impression",
-				content: "Quel format d\'impression voulez-vous ?",
-				buttons: [{ value: "Annuler" }, { value: "Simple"},{ value: "Complet"}],
+				content: "Impression d'une fiche adhérent ?",
+				buttons: [{ value: "Annuler" },{ value: "Imprimer"}],
 	            success: function(result)  {
 		        	if (result!="Annuler") {
  						var formulaire = document.createElement('form');
@@ -145,7 +145,7 @@
 					<?php 
 						if ($ad->compadresse !="") {
 							echo '<td><label for "compadresse">Complément :</label></td>';
-							echo '<td style="color:blue"><?php echo $ad->compadresse ?></td>';
+							echo '<td style="color:blue">'.$ad->compadresse.'</td>';
 						}
 					?>
 				</tr>
