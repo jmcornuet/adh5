@@ -1,6 +1,6 @@
 <?php
 	require_once("MGENconfig.php");
-	if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh/";
+	if (PHP_OS == "Darwin") $basedir=""; else $basedir="";
 	function arrayunique($a) {
 		$b=array();
 		for ($i=0;$i<count($a);$i++) {

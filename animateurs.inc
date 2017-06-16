@@ -1,6 +1,6 @@
 <?php
 	require_once("MGENconfig.php");
-	if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh/";
+	if (PHP_OS == "Darwin") $basedir=""; else $basedir="";
     function writefileani($tani) {
         $M = new MConf;
         $sql="SELECT * FROM $tani ORDER BY nom";

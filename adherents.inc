@@ -1,6 +1,6 @@
 <?php
 	require_once("MGENconfig.php");
-	if (PHP_OS == "Darwin") $basedir=""; else $basedir="/var/www/html/adh1/";
+	if (PHP_OS == "Darwin") $basedir=""; else $basedir="";
     function transprenom($p) {
         $fp=explode(" ",$p);
         for ($j=0;$j<count($fp);$j++) {
