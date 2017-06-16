@@ -85,14 +85,14 @@
 				<tr>
 					<td style="font-size : 20px;color:blue"> <?php echo $gract->activite ?> </td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td>&nbsp;&nbsp;Cotisation Adhérent</td>
+					<td>&nbsp;&nbsp;Participation Adhérent</td>
 					<td><input name="tarifA" type="text" size=5 value="<?php echo $gract->tarifA ?>"> </td>
 					<td>€</td>
 				</tr>
 				<tr>
 					<td></td>
 					<td></td>
-					<td>&nbsp;&nbsp;Cotisation Conjoint</td>
+					<td>&nbsp;&nbsp;Participation Conjoint</td>
 					<td><input name="tarifC" type="text" size=5 value="<?php echo $gract->tarifC ?>"></td>
 					<td>€</td>
 				</tr>

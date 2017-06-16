@@ -57,10 +57,10 @@
 			<table>
 				<tr>
 					<td></td>
-					<td>Cotisation adhérent:</td>
+					<td style="float:right">Participation adhérent:</td>
 					<td><input id="tarifA" type="text" size=10 name="tarifA"></td>
 					<td> </td>
-					<td style="float:right">Cotisation Conjoint:</td>
+					<td style="float:right">Participation Conjoint:</td>
 					<td><input id="tarifC" type="text" size=10 name="tarifC"></td>
 				</tr>
 				<tr>
