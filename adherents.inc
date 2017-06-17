@@ -220,7 +220,7 @@
 	    	$sql0 .="titre,qualite,nom,prenom,adresse,codepostal,ville,";
 	    	$sql1 .="'$this->titre','$this->qualite','$this->nom','$this->prenom','$this->adresse',$this->codepostal,'$this->ville',";
 	    	$sql0 .="profession,premannee,activites,prenomnom,cotisation,";
-	    	$sql1 .="'$this->profession',$this->premannee,'$this->activites','$this->prenomnom',$this->cotisation,";
+	    	$sql1 .="'$this->profession',$this->premannee,'$this->activites','$this->prenomnom','$this->cotisation',";
 			if (strlen($this->numMGEN)>0) {$sql0 .="numMGEN,";$sql1 .="'$this->numMGEN',";}
 			if (strlen($this->assurance)>0) {$sql0 .="assurance,";$sql1 .="'$this->assurance',";}
 			if (strlen($this->numeroSS)>0) {$sql0 .="numeroSS,";$sql1 .="'".compacte($this->numeroSS)."',";}
