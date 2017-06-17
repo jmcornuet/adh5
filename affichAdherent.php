@@ -61,13 +61,6 @@
 		$ad->id = $_POST['id'];
 		$ad->getadh($tadh);
 		$ad->getactivites($tact);
-		if ($ad->particip1=="P") $particip1="checked";else $particip1="";
-		if ($ad->particip2=="P") $particip2="checked";else $particip2="";
-		if ($ad->particip3=="P") $particip3="checked";else $particip3="";
-		if ($ad->particip4=="P") $particip4="checked";else $particip4="";
-		if ($ad->particip5=="P") $particip5="checked";else $particip5="";
-		if ($ad->particip6=="P") $particip6="checked";else $particip6="";
-		//echo $ad->activite1."  ".$ad->activite2."  ".$activite3."<br>";
 		function putSelected($opt,$sel) {
 			$f=strpos($opt,$sel)+strlen($sel)+1;
 			$s1=substr($opt,0,$f);
@@ -176,8 +169,9 @@
 					<td style="color:blue"><?php echo $ad->numeroSS ?></td>
 					<td><label for="cotisation">Cotisation : </label></td></td>
 					<td><?php 
-							if ($ad->cotisation=='0') echo "<span style='color:green;font-weight: bold'> A JOUR</span>";
-							else  {echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>";$nencaisse++;} 
+							if ($ad->cotisation=='P') echo "<span style='color:green;font-weight: bold'> A JOUR</span>";
+							if ($ad->cotisation=='E') echo "<span style='color:green;font-weight: bold'> EXEMPTE</span>";
+							if ($ad->cotisation=='A')  {echo "<span style='color:red;font-weight: bold'> EN ATTENTE</span>";$nencaisse++;} 
 						?> 
 					</td>
 				</tr>
@@ -199,16 +193,18 @@
 					<?php if ($ad->activite1 != "Pas d'activité") {
 						echo "<td>$ad->activite1</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe1</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						if ($particip1=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+						if ($ad->particip1=="P") echo "<span style='color:green'>A JOUR</span>";
+						if ($ad->particip1=="E") echo "<span style='color:green'>EXEMPTE</span>";
+						if ($ad->particip1=="A") {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 					}  else echo "<td></td><td></td><td></td>" ?>
 					<td></td>
 					
 					<?php if ($ad->activite4 != "Pas d'activité") {
 						echo "<td>$ad->activite4</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe4</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						if ($particip4=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+						if ($ad->particip4=="P") echo "<span style='color:green'>A JOUR</span>";
+						if ($ad->particip4=="E") echo "<span style='color:green'>EXEMPTE</span>";
+						if ($ad->particip4=="A") {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 					}  else echo "<td></td><td></td><td></td>" ?>
 				</tr>			
 				<tr>
@@ -216,16 +212,18 @@
 					<?php if ($ad->activite2 != "Pas d'activité") {
 						echo "<td>$ad->activite2</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe2</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						if ($particip2=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+						if ($ad->particip2=="P") echo "<span style='color:green'>A JOUR</span>";
+						if ($ad->particip2=="E") echo "<span style='color:green'>EXEMPTE</span>";
+						if ($ad->particip2=="A") {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 					} else echo "<td></td><td></td><td></td>" ?>
 					<td></td>
 					
 					<?php if ($ad->activite5 != "Pas d'activité") {
 						echo "<td>$ad->activite5</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe5</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						if ($particip5=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+						if ($ad->particip5=="P") echo "<span style='color:green'>A JOUR</span>";
+						if ($ad->particip5=="E") echo "<span style='color:green'>EXEMPTE</span>";
+						if ($ad->particip5=="A") {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 					}  else echo "<td></td><td></td><td></td>" ?>
 				</tr>			
 				<tr>
@@ -233,16 +231,18 @@
 					<?php if ($ad->activite3 != "Pas d'activité") {
 						echo "<td>$ad->activite3</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe3</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						if ($particip3=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+						if ($ad->particip3=="P") echo "<span style='color:green'>A JOUR</span>";
+						if ($ad->particip3=="E") echo "<span style='color:green'>EXEMPTE</span>";
+						if ($ad->particip3=="A") {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 					}  else echo "<td></td><td></td><td></td>" ?>
 					<td></td>
 					
 					<?php if ($ad->activite6 != "Pas d'activité") {
 						echo "<td>$ad->activite6</td>";
 						echo "<td>&nbsp;&nbsp;&nbsp;$ad->groupe6</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						if ($particip6=="checked") echo "<span style='color:green'>A JOUR</span>";
-						else {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
+						if ($ad->particip6=="P") echo "<span style='color:green'>A JOUR</span>";
+						if ($ad->particip6=="E") echo "<span style='color:green'>EXEMPTE</span>";
+						if ($ad->particip6=="A") {echo "<span style='color:red '>EN ATTENTE</span></td>";$nencaisse++;}
 					}  else echo "<td></td><td></td><td></td>" ?>
 				</tr>
 				<tr><td> </td></tr>

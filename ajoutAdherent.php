@@ -10,6 +10,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="bibglobal0.css" type="text/css" rel="stylesheet" media="screen"/>
     <script src="fonctions.js"></script>
+    <script  type="text/javascript">
+        function goencaisse(id) {
+            var formul = document.createElement('form');
+            formul.setAttribute('action','encaisseAd.php');
+            formul.setAttribute('method','post');
+            var input0 = document.createElement('input');
+            input0.setAttribute('type','hidden');input0.setAttribute('name','id');input0.setAttribute('value',id);
+            formul.appendChild(input0);
+            document.body.appendChild(formul);
+            formul.submit();
+        }
+    </script>
 </head>
 <body onload="resizemenu()" onresize="resizemenu()">
 	<?php 

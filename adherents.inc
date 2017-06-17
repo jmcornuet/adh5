@@ -183,7 +183,7 @@
 			if ($this->specialite != $donnees['specialite']) $sql .=" specialite='".addslashes($this->specialite)."',";
 			if ($this->numMGEN !== $donnees['numMGEN']) $sql .=" numMGEN='$this->numMGEN',";
 			if ($this->numeroSS != $donnees['numeroSS']) $sql .=" numeroSS='$this->numeroSS',";
-			if ($this->cotisation != $donnees['cotisation']) $sql .=" cotisation=$this->cotisation,";
+			if ($this->cotisation != $donnees['cotisation']) $sql .=" cotisation='$this->cotisation',";
 			if ($this->premannee != $donnees['premannee']) $sql .=" premannee=$this->premannee,";
 			if ($this->activites != $donnees['activites']) $sql .=" activites='$this->activites',";
 			if ($this->telephone != $donnees['telephone']) $sql .=" telephone='$this->telephone',";
@@ -213,7 +213,7 @@
 	    	$this->profession = addslashes($this->profession);
 	    	$this->specialite = addslashes($this->specialite);
 	    	$this->prenomnom = $this->prenom." ".$this->nom;
-	    	$this->cotisation = 1;
+	    	$this->cotisation = "A";
 	    	//echo $this->activites."<br>";
 	    	$sql0 = "INSERT INTO $tadh (";
 	    	$sql1 = " VALUES (";
@@ -342,9 +342,17 @@
     			if (strstr($this->activite5,"Informatique")) $par[4]="P";
     			if (strstr($this->activite6,"Informatique")) $par[5]="P";
     		}
-    		//print_r($act);echo"<br>";
-    		//print_r($gro);echo"<br>";
-    		//print_r($par);echo"<br>";
+    		if (strstr($pp,"E")) {
+    			if (strstr($this->activite1,"Informatique")) $par[0]="E";
+    			if (strstr($this->activite2,"Informatique")) $par[1]="E";
+    			if (strstr($this->activite3,"Informatique")) $par[2]="E";
+    			if (strstr($this->activite4,"Informatique")) $par[3]="E";
+    			if (strstr($this->activite5,"Informatique")) $par[4]="E";
+    			if (strstr($this->activite6,"Informatique")) $par[5]="E";
+    		}
+    		print_r($act);echo"<br>";
+    		print_r($gro);echo"<br>";
+    		print_r($par);echo"<br>";
     		$nact=count($act);
     		$this->activites="";
 		    for ($i=0;$i<$nact;$i++) {

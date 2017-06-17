@@ -11,7 +11,7 @@
 	$act=array();
 	for ($i=0;$i<$g->n;$i++) {
 		if ($g->gract[$i]->activite !== "Pas d'activité") {
-			if (stristr($g->gract[$i]->activite,"informatique")) {
+			if (strstr($g->gract[$i]->activite,"Informatique")) {
 				array_push($act,"Informatique;".$g->gract[$i]->tarifA.";".$g->gract[$i]->tarifC);
 			} else {
 				array_push($act,$g->gract[$i]->activite.";".$g->gract[$i]->tarifA.";".$g->gract[$i]->tarifC);

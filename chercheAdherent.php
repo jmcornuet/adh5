@@ -86,7 +86,8 @@
 					<td> <input type="hidden" name="cotisation" value=""></td>
 					<td><label for="cotisation">Cotisation : </label></td></td>
 					<td><input id="cotisation" type="radio" name="cotisation" value="P">A jour &nbsp;&nbsp;&nbsp;
-					<input id="cotisation" type="radio" name="cotisation" value="A">En attente </td>
+					<input id="cotisation" type="radio" name="cotisation" value="A">En attente &nbsp;&nbsp;&nbsp;
+					<input id="cotisation" type="radio" name="cotisation" value="E">Exempté</td>
 				</tr>
 				<tr>
 					<td> </td>			
@@ -101,18 +102,20 @@
 			</br>
 			<table class="saisie">
 				<tr>
-					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>Attente</th><th>     </th>
-					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>Attente</th>
+					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>Attente</th><th>Exempté</th><th>     </th>
+					<th>Activité</th><th>Groupe</th><th>Réglée</th><th>Attente</th><th>Exempté</th>
 				</tr>
 					<td><select name="activite1"  class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe1" class="selectoption"><?php echo $optionsgroupe ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1p" value="" ></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1a" value="" ></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1e" value="" ></td>
 					<td></td>
 					<td><select  name="activite4" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe4" class="selectoption"><?php echo $optionsgroupe ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p4p" value="" ></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p4a" value="" ></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1e" value="" ></td>
 				</tr>			
 				<tr>
 				<tr>
@@ -120,11 +123,13 @@
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe2" class="selectoption"><?php echo $optionsgroupe ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p2p" value="" ></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p2a" value="" ></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1e" value="" ></td>
 					<td></td>
 					<td><select  name="activite5" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe5" class="selectoption"><?php echo $optionsgroupe ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p5p" value="" ></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p5a" value="" ></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1e" value="" ></td>
 				</tr>			
 				<tr>
 				<tr>
@@ -132,11 +137,13 @@
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe3" class="selectoption"><?php echo $optionsgroupe ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p3p" value="" ></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p3a" value="" ></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1e" value="" ></td>
 					<td></td>
 					<td><select  name="activite6" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe6" class="selectoption"><?php echo $optionsgroupe ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p6p" value="" ></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p6a" value="" ></td>
+					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="p1e" value="" ></td>
 				</tr>			
 			</table>
 					</br>

@@ -163,15 +163,20 @@
             $critere .=" (téléphone contient ".$ad->telephone.")";
        	}
        	if ($ad->cotisation=='P') {
-            if (strlen($sql)<1) $sql =$mes0." cotisation = '0'";
-            else $sql = $sql." AND cotisation = '0'";
+            if (strlen($sql)<1) $sql =$mes0." cotisation = 'P'";
+            else $sql = $sql." AND cotisation = 'P'";
             $critere .=" (cotisation à jour)";
        	}
        	if ($ad->cotisation=='A') {
-            if (strlen($sql)<1) $sql =$mes0." cotisation <> '0'";
-            else $sql = $sql." AND cotisation <> '0'";
+            if (strlen($sql)<1) $sql =$mes0." cotisation = 'A'";
+            else $sql = $sql." AND cotisation = 'A'";
             $critere .=" (cotisation en attente)";
        	}
+        if ($ad->cotisation=='E') {
+            if (strlen($sql)<1) $sql =$mes0." cotisation = 'E'";
+            else $sql = $sql." AND cotisation = 'E'";
+            $critere .=" (exempté(e) de cotisation)";
+        }
        	if (strlen($ad->premannee)>0) {
             if (strlen($sql)<1) $sql =$mes0." premannee = '".$ad->premannee."'";
             else $sql = $sql." AND premannee = '".$ad->premannee."'";
@@ -203,7 +208,7 @@
 			$mes ='<div id="divConteneur"> <table style="width:80%"><tr><th>ID</th><th>Nom</th><th>Prénom</th><th>N° MGEN</th><th>Téléphone</th><th>courriel</th></tr>';
     		for ($i=0;$i<$add->n;$i++) {
 				$idligne=strval($i);
-				if ($add->adh[$i]->cotisation=="0") {
+				if ($add->adh[$i]->cotisation!="A") {
        				$mes =$mes.'<tr id='.$idligne.' class="defaut" onclick="SelectEmprunteur(this)">';
     				$mes =$mes.'<td class="defaut">'.$add->adh[$i]->id.'</td>';
     				$mes =$mes.'<td class="defaut" style="text-align:left">'.$add->adh[$i]->nom.'</td>';

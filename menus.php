@@ -5,6 +5,8 @@
 	echo strftime("%A %d %B %Y");
 	//echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$prenom." aux commandes !";
 	echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Version ".$version;
+	if ($niveau<2) echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Administrateur";
+	if ($niveau==3) echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accueil"; 
 
 	$anencours = strftime("%Y");
 	?>

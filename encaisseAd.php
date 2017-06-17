@@ -15,41 +15,82 @@
     <script src="fonctions.js"></script>
     <script>
     	function updatetotal(origine) {
-    		document.getElementById('message').innerHTML=String(origine);
+    		//document.getElementById('message').innerHTML=String(origine);
     		var stotal=document.getElementById('total').innerHTML;stotal=stotal.substr(0,stotal.length-2);
     		document.getElementById('total').innerHTML="";
     		var total=Number(stotal);var s="";    		
      		switch(origine) {
-     			case 0 :  if (document.forms["encAd"]["cotisation"].checked) total = total+Number(document.forms["encAd"]["valcotisation"].value);
-     					  else total = total-Number(document.forms["encAd"]["valcotisation"].value);
+     			case 0 :  if (document.forms["encAd"]["cotisation"].checked) {
+     						total = total+Number(document.forms["encAd"]["valcotisation"].value);
+     						document.forms["encAd"]["excotisation"].checked=false;
+     					  } else total = total-Number(document.forms["encAd"]["valcotisation"].value);
      					  break;
     			case 1 :  s=document.getElementById("tarif1").innerHTML;s=s.substr(0,s.length-2);
-    			 		  if (document.forms["encAd"]["particip1"].checked) total = total+Number(s);
+    			 		  if (document.forms["encAd"]["particip1"].checked) {total = total+Number(s);document.forms["encAd"]["exparticip1"].checked=false;}
     			 		  else total = total-Number(s);
     			 		  break;
     			case 2 :  s=document.getElementById("tarif2").innerHTML;s=s.substr(0,s.length-2);
-    					  if (document.forms["encAd"]["particip2"].checked) total = total+Number(s);
+    					  if (document.forms["encAd"]["particip2"].checked) {total = total+Number(s);document.forms["encAd"]["exparticip2"].checked=false;}
     			 		  else total = total-Number(s);
     			 		  break;
     			case 3 :  s=document.getElementById("tarif3").innerHTML;s=s.substr(0,s.length-2);
-    					  if (document.forms["encAd"]["particip3"].checked) total = total+Number(s);
+    					  if (document.forms["encAd"]["particip3"].checked) {total = total+Number(s);document.forms["encAd"]["exparticip3"].checked=false;}
     			 		  else total = total-Number(s);
     			 		  break;
     			case 4 :  s=document.getElementById("tarif4").innerHTML;s=s.substr(0,s.length-2);
-    					  if (document.forms["encAd"]["particip4"].checked)  total = total+Number(s);
+    					  if (document.forms["encAd"]["particip4"].checked)  {total = total+Number(s);document.forms["encAd"]["exparticip4"].checked=false;}
     			 		  else total = total-Number(s);
     			 		  break;
     			case 5 :  s=document.getElementById("tarif5").innerHTML;s=s.substr(0,s.length-2);
-    					  if (document.forms["encAd"]["particip5"].checked)  total = total+Number(s);
+    					  if (document.forms["encAd"]["particip5"].checked)  {total = total+Number(s);document.forms["encAd"]["exparticip5"].checked=false;}
     			 		  else total = total-Number(s);
     			 		  break;
     			case 6 :  s=document.getElementById("tarif6").innerHTML;s=s.substr(0,s.length-2);
-    					  if (document.forms["encAd"]["particip6"].checked)  total = total+Number(s);
+    					  if (document.forms["encAd"]["particip6"].checked)  {total = total+Number(s);document.forms["encAd"]["exparticip6"].checked=false;}
     			 		  else total = total-Number(s);
     			 		  break;
     		}
     		document.getElementById('total').innerHTML=total+" €";
     	}
+
+    	function exempt(origine) {
+    		//document.getElementById('message').innerHTML=document.forms["encAd"]["valcotisation"].value;
+    		var stotal=document.getElementById('total').innerHTML;stotal=stotal.substr(0,stotal.length-2);
+    		document.getElementById('total').innerHTML="";
+    		var total=Number(stotal);var s="";    		
+     		switch(origine) {
+     			case 0 :  if (document.forms["encAd"]["cotisation"].checked) {
+     						total = total-Number(document.forms["encAd"]["valcotisation"].value);
+     						document.forms["encAd"]["cotisation"].checked=false;
+     					  }
+     					  break;
+    			case 1 :  s=document.getElementById("tarif1").innerHTML;s=s.substr(0,s.length-2);
+    			 		  if (document.forms["encAd"]["particip1"].checked) {
+    			 		  	total = total-Number(s);document.forms["encAd"]["particip1"].checked=false;}
+    			 		  break;
+    			case 2 :  s=document.getElementById("tarif2").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip2"].checked) {
+    					  	total = total-Number(s);document.forms["encAd"]["particip2"].checked=false;}
+    			 		  break;
+    			case 3 :  s=document.getElementById("tarif3").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip3"].checked) {
+    					  	total = total-Number(s);document.forms["encAd"]["particip3"].checked=false;}
+    			 		  break;
+    			case 4 :  s=document.getElementById("tarif4").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip4"].checked) {
+    					  	total = total-Number(s);document.forms["encAd"]["particip4"].checked=false;}
+    			 		  break;
+    			case 5 :  s=document.getElementById("tarif5").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip5"].checked) {
+    					  	total = total-Number(s);document.forms["encAd"]["particip5"].checked=false;}
+    			 		  break;
+    			case 6 :  s=document.getElementById("tarif6").innerHTML;s=s.substr(0,s.length-2);
+    					  if (document.forms["encAd"]["particip6"].checked) {
+    					  	total = total-Number(s);document.forms["encAd"]["particip6"].checked=false;}
+    			 		  break;
+    		}
+    		document.getElementById('total').innerHTML=total+" €";
+    	}    	
     </script>
 </head>
 <body onload="resizemenu()" onresize="resizemenu()">
@@ -106,17 +147,17 @@
 		}
 		$n=$ga->n;$qual=$ad->qualite;
         $act=array();$part=array();$tarif=array();$idtarif=array();$idd=array();
-		if ($ad->activite1 != "Pas d'activité") {if ($ad->particip1 != "P") {
+		if ($ad->activite1 != "Pas d'activité") {if ($ad->particip1 == "A") {
 			array_push($act, $ad->activite1);array_push($part,"particip1");array_push($tarif,tarifAC($n,$qual,$ad->activite1,$listact,$tarA,$tarC));array_push($idtarif,"tarif1");array_push($idd,1);}}
-		if ($ad->activite2 != "Pas d'activité") {if ($ad->particip2 != "P") {
+		if ($ad->activite2 != "Pas d'activité") {if ($ad->particip2 == "A") {
 			array_push($act, $ad->activite2);array_push($part,"particip2");array_push($tarif,tarifAC($n,$qual,$ad->activite2,$listact,$tarA,$tarC));array_push($idtarif,"tarif2");array_push($idd,2);}}
-		if ($ad->activite3 != "Pas d'activité") {if ($ad->particip3 != "P") {
+		if ($ad->activite3 != "Pas d'activité") {if ($ad->particip3 == "A") {
 			array_push($act, $ad->activite3);array_push($part,"particip3");array_push($tarif,tarifAC($n,$qual,$ad->activite3,$listact,$tarA,$tarC));array_push($idtarif,"tarif3");array_push($idd,3);}}
-		if ($ad->activite4 != "Pas d'activité") {if ($ad->particip4 != "P") {
+		if ($ad->activite4 != "Pas d'activité") {if ($ad->particip4 == "A") {
 			array_push($act, $ad->activite4);array_push($part,"particip4");array_push($tarif,tarifAC($n,$qual,$ad->activite4,$listact,$tarA,$tarC));array_push($idtarif,"tarif4");array_push($idd,4);}}
-		if ($ad->activite5 != "Pas d'activité") {if ($ad->particip5 != "P") {
+		if ($ad->activite5 != "Pas d'activité") {if ($ad->particip5 == "A") {
 			array_push($act, $ad->activite5);array_push($part,"particip5");array_push($tarif,tarifAC($n,$qual,$ad->activite5,$listact,$tarA,$tarC));array_push($idtarif,"tarif5");array_push($idd,5);}}
-		if ($ad->activite6 != "Pas d'activité") {if ($ad->particip6 != "P") {
+		if ($ad->activite6 != "Pas d'activité") {if ($ad->particip6 == "A") {
 			array_push($act, $ad->activite6);array_push($part,"particip6");array_push($tarif,tarifAC($n,$qual,$ad->activite6,$listact,$tarA,$tarC));array_push($idtarif,"tarif6");array_push($idd,6);}}
 
 		$an = strftime("%Y");
@@ -126,7 +167,7 @@
 		$optionsm = putSelected3($optionsm,$mo);
 		$optionsa = putSelected2($optionsa,$an);
 		$nact = count($act);
-		if ($nact+$ad->cotisation!= 0) {
+		if (($nact>0)||(+$ad->cotisation=="A")) {
 ?>		
 	<div class="titre1">Encaissement d'un chèque</div>
 	<div class="champ">
@@ -177,21 +218,25 @@
 			</br>
 			<table  class="saisie">
 				<?php 
-					if ($ad->cotisation > 0) {
+					if ($ad->cotisation == "A") {
 						$cot='cotisation';
 						$msg="<tr><td>La cotisation au club </td><td style='float:right'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".$cotisation." € </td>";
 						$msg .= "<td><input name='valcotisation' type='hidden' value=$cotisation></td>";
-						$msg .= "<td style='float:right'><input onclick='updatetotal(0)' type='checkbox' name='cotisation' value='' ></td></tr>";
+						$msg .= "<td style='float:right'><input onclick='updatetotal(0)' type='checkbox' name='cotisation' value='' ></td>";
+						$msg .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;Exempté &nbsp;&nbsp;</td>";
+						$msg .= "<td><input onclick='exempt(0)' type='checkbox' name='excotisation' value=''></td></tr>";
 						echo $msg;
 					}
 					if ($nact>0) {					
-						if ($ad->cotisation > 0) $msg="<tr><td></td><td></td></tr>"; 
+						if ($ad->cotisation == "A") $msg="<tr><td></td><td></td></tr>"; 
 						for ($i=0;$i<$nact;$i++) {
 							$msg .= "<tr>";
 							$msg .= "<td>L'activité : ".$act[$i]."</td>";
 							$msg .= "<td style='float:right' id='".$idtarif[$i]."'>".$tarif[$i]." €</td>";
 							$msg .= "<td></td>";
 							$msg .= "<td style='float:right'> <input onclick='updatetotal(".$idd[$i].")' type='checkbox' name='".$part[$i]."' value='' ></td>";
+						$msg .= "<td>&nbsp;&nbsp;&nbsp;&nbsp;Exempté &nbsp;&nbsp;</td>";
+						$msg .= "<td><input onclick='exempt(".$idd[$i].")' type='checkbox' name='exparticip".$idd[$i]."' value=''></td>";
 							$msg .= "</tr>";
 						}
 						echo $msg;

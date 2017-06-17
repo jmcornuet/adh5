@@ -3,8 +3,8 @@
     require_once("session.php");
 	if (!$prenom) die();
 	include("MGENconfig.php");
-	$M = new MConf;
-	$M->connexion(); 
+	//$M = new MConf;
+	//$M->connexion(); 
 ?>
 <!DOCTYPE html>
 <html>

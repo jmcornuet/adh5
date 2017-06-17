@@ -46,6 +46,7 @@ if ($login!="" AND $pass!="") {
 			setlocale(LC_TIME, 'fr', 'fr_FR','fr_FR.UTF-8');
 			$_SESSION['debut']=utf8_encode(strftime("%d/%m/%g_%H:%M:%S"));
 			$_SESSION['version'] = "1.0";
+			$M->connexion();
 			$M->close();
 		}
 
