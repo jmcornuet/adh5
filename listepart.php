@@ -56,6 +56,7 @@
 		$an->getani($tani);//echo $an->prenom." ".$an->nom."<br>";
 		if ($gra->codactivite<10) $req = "%0".strval($gra->codactivite)."-".strval($grou)."%";
 		else $req = "%".strval($gra->codactivite)."-".strval($grou)."%";
+		$part="=".strval($gra->codactivite)."-".strval($grou);
 		$N = new MConf;
 		$sql = "SELECT * FROM $tadh WHERE activites LIKE '$req' ORDER BY nom";
 		//echo $sql."<br>";
@@ -103,12 +104,18 @@
 	<br>
 	<table class="tablepart">
 		<tr>
-			<th>Numéro</th><th></th><th>NOM</th><th>PRENOM</th><th>TELEPHONE</th><th></th><th></th><th></th>
+			<th>Numéro</th><th></th><th>NOM</th><th>PRENOM</th><th>TELEPHONE</th><th>ADHESION</th><th>PARTICIPATION</th>
 		</tr>
 		<?php 
 			for ($i=0;$i<$ad->n;$i++) {
-				$mes = "<tr> <td>".$ad->adh[$i]->numMGEN."</td><td>".$ad->adh[$i]->qualite."</td> <td>".$ad->adh[$i]->nom."   </td><td>   ".$ad->adh[$i]->prenom."   </td><td>".$ad->adh[$i]->telephone."</td><td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td></tr>";
-				echo $mes;
+				$mes = "<tr> <td>".$ad->adh[$i]->numMGEN."</td><td>".$ad->adh[$i]->qualite."</td> <td>".$ad->adh[$i]->nom."   </td><td>   ".$ad->adh[$i]->prenom."   </td><td>".$ad->adh[$i]->telephone."</td>";
+				if (($ad->adh[$i]->cotisation=='A')or($ad->adh[$i]->cotisation=='')) $mes .="<td style='color:red'>En attente</td>";
+				else if ($ad->adh[$i]->cotisation=='P') $mes .="<td style='color:blue'>A jour</td>";
+				else if ($ad->adh[$i]->cotisation=='E') $mes .="<td style='color:green'>Exempté(e)</td>";
+				if (strstr("=".$ad->adh[$i]->activites,$part."-A")) $mes .="<td style='color:red'>En attente</td>";
+				if (strstr("=".$ad->adh[$i]->activites,$part."-P")) $mes .="<td style='color:blue'>A jour</td>";
+				if (strstr("=".$ad->adh[$i]->activites,$part."-E")) $mes .="<td style='color:green'>Exempté(e)</td>";
+				echo $mes."</tr>";
 			}
 		?>
 	</table>

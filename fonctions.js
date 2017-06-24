@@ -247,36 +247,45 @@ function valide() {
 	}
 }
 function validecheque() {
-	nb=0;
-	var msg="Vous avez oublié d'indiquer : </br>";
-	if (document.forms["encAd"]["montant"].value=="") {msg+="- le montant</br>";nb++;}
-	if (document.forms["encAd"]["numcheque"].value=="") {msg+="- le numéro du chèque</br>";nb++;}
-	if (document.forms["encAd"]["banque"].value=="") {msg+="- le nom de la banque</br>";nb++;}
-	if (nb>0) {
-	    $.msgBox({
-    		title:"Encaissement d'un chèque",
-    		content:"Attention ! "+msg
-    	});
-	}
-	if (nb<1) {
-		smontant = document.forms["encAd"]["montant"].value;
-		smontant=smontant.replace(",",".");document.getElementById('message').innerHTML=smontant;
-		montant=Number(smontant);
-		stotal = document.getElementById('total').innerHTML;
-		stotal = stotal.substr(0,stotal.length-2);
-		total=Number(stotal);
-		if (montant != total) {
+	stotal = document.getElementById('total').innerHTML;
+	stotal = stotal.substr(0,stotal.length-2);
+	total=Number(stotal);
+	if (total>0) {
+		nb=0;
+		var msg="Vous avez oublié d'indiquer : </br>";
+		if (document.forms["encAd"]["montant"].value=="") {msg+="- le montant</br>";nb++;}
+		if (document.forms["encAd"]["numcheque"].value=="") {msg+="- le numéro du chèque</br>";nb++;}
+		if (document.forms["encAd"]["banque"].value=="") {msg+="- le nom de la banque</br>";nb++;}
+		if (nb>0) {
 		    $.msgBox({
 	    		title:"Encaissement d'un chèque",
-	    		content:"Attention ! <br> Le total ne correspond pas au montant du chèque."
+	    		content:"Attention ! "+msg
 	    	});
 		}
-		else {
-			document.getElementById("message").innerHTML="Saisie validée";
-			document.getElementById("go").type="submit";
-			document.getElementById("bouton0").style.visibility="hidden";
-			
+		if (nb<1) {
+			smontant = document.forms["encAd"]["montant"].value;
+			smontant=smontant.replace(",",".");document.getElementById('message').innerHTML=smontant;
+			montant=Number(smontant);
+			stotal = document.getElementById('total').innerHTML;
+			stotal = stotal.substr(0,stotal.length-2);
+			total=Number(stotal);
+			if (montant != total) {
+			    $.msgBox({
+		    		title:"Encaissement d'un chèque",
+		    		content:"Attention ! <br> Le total ne correspond pas au montant du chèque."
+		    	});
+			}
+			else {
+				document.getElementById("message").innerHTML="Saisie validée";
+				document.getElementById("go").type="submit";
+				document.getElementById("bouton0").style.visibility="hidden";
+				
+			}
 		}
+	} else {
+		document.getElementById("message").innerHTML="Total nul";
+		document.getElementById("go").type="submit";
+		document.getElementById("bouton0").style.visibility="hidden";
 	}
 }
 

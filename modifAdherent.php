@@ -20,7 +20,7 @@
 	    include("adherents.inc");
         include("liOptions.php");
 	    $ad = new Adherent;
-	    $ad->getpost();
+	    $ad->getpost();echo "ad->particip2 = ".$ad->particip2;
         $ad->activite1=getoption($optionsactivite,$ad->activite1);
         $ad->activite2=getoption($optionsactivite,$ad->activite2);
         $ad->activite3=getoption($optionsactivite,$ad->activite3);
@@ -28,7 +28,7 @@
         $ad->activite5=getoption($optionsactivite,$ad->activite5);
         $ad->activite6=getoption($optionsactivite,$ad->activite6);
         $ad->getcodes($tact);
-        //echo $ad->activites."<br>";
+        echo $ad->activites."<br>";
 	    if ($ad->modifie($tadh)) {
             echo "</br></br><div class='alerte'>La fiche de $ad->prenom $ad->nom a bien été modifiée dans la base de données </div>";
             echo "<br><br>";

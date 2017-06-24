@@ -350,9 +350,9 @@
     			if (strstr($this->activite5,"Informatique")) $par[4]="E";
     			if (strstr($this->activite6,"Informatique")) $par[5]="E";
     		}
-    		print_r($act);echo"<br>";
-    		print_r($gro);echo"<br>";
-    		print_r($par);echo"<br>";
+    		//print_r($act);echo"<br>";
+    		//print_r($gro);echo"<br>";
+    		//print_r($par);echo"<br>";
     		$nact=count($act);
     		$this->activites="";
 		    for ($i=0;$i<$nact;$i++) {
@@ -397,7 +397,7 @@
 	    				if (count($aa)>2) $p=$aa[2];
 	    				else $p="A";
 	    			} else {$a=$c[$i];$g="0";$p="A";}
-	    			//echo "a=".$a."<br>";
+	    			//echo "a=".$a."  g=".$g."  p=".$p."<br>";
 	    			while ((!$trouve)and($j<count($codactivite))) {
 	    				$trouve = ($a == $codactivite[$j]);
 	    				if (!$trouve) $j++;
@@ -445,6 +445,14 @@
 		    		if (strstr($this->activite4,"Informatique")) $this->particip4="P";
 		    		if (strstr($this->activite5,"Informatique")) $this->particip5="P";
 		    		if (strstr($this->activite6,"Informatique")) $this->particip6="P";
+	    		}
+	    		if (strstr($pp,"E")) {
+		    		if (strstr($this->activite1,"Informatique")) $this->particip1="E";
+		    		if (strstr($this->activite2,"Informatique")) $this->particip2="E";
+		    		if (strstr($this->activite3,"Informatique")) $this->particip3="E";
+		    		if (strstr($this->activite4,"Informatique")) $this->particip4="E";
+		    		if (strstr($this->activite5,"Informatique")) $this->particip5="E";
+		    		if (strstr($this->activite6,"Informatique")) $this->particip6="E";
 	    		}
 	    	}
     	}

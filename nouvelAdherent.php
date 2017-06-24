@@ -24,7 +24,7 @@
 			<form name="nouvelAd" method="post" action="ajoutAdherent.php">
 			<table  class="saisie">
 				<tr>
-					<td><select id="titre" name="titre"><option value="Titre">Titre</option><option value="MME">Mme</option><option value="M.">M.</option></select></td>
+					<td><select style="color:red" id="titre" name="titre"><option value="Titre">Titre</option><option value="MME">Mme</option><option value="M.">M.</option></select></td>
 					<td><label for="nom">Nom : </label></td>
 					<td><input id="nom" type="text" size=40 name="nom" class="fichinput" onfocus="blanc(1)" onblur="test(1)"></td>
 					<td><label for="nomjf">Nom de jeune-fille: </label></td>
@@ -32,7 +32,7 @@
 					
 				</tr>
 				<tr>
-					<td><select id="qualite" name="qualite"><option value="Qualite">Qualité</option><option value="M">Mutualiste</option><option value="C">Ayant-droit</option></select> </td>			
+					<td><select style="color:red" id="qualite" name="qualite"><option value="Qualite">Qualité</option><option value="M">Mutualiste</option><option value="C">Ayant-droit</option></select> </td>			
 					<td><label for="prenom">Prénom : </label></td>
 					<td><input id="prenom" type="text" size=40 name="prenom" class="fichinput" onfocus="blanc(2)" onblur="test(2)"></td>
 					<td><label for="numMGEN">Numéro Club : </label></td>
@@ -63,7 +63,7 @@
 					<td> </td>			
 					<td><label for="courriel">Courriel : </label></td>
 					<td><input id="courriel" type="text" name="courriel" size=40></td> 
-					<td><label for "profession">Profession</label></td>
+					<td style="color:red"><label for "profession">Profession</label></td>
 					<td><select id="profession" name="profession"><?php echo $optionsprofession ?></select></td>
 				</tr>
 				<tr>					
@@ -98,23 +98,29 @@
 				<tr>
 					<td><select name="activite1"  class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe1" class="selectoption"><?php echo $optionsgroupe ?></select></td>
+					<input name='particip1' type='hidden' value='A'>
 					<td></td>
 					<td><select  name="activite4" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe4" class="selectoption"><?php echo $optionsgroupe ?></select></td>
+					<input name='particip4' type='hidden' value='A'>
 				</tr>			
 				<tr>
 					<td><select name="activite2" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe2" class="selectoption"><?php echo $optionsgroupe ?></select></td>
+					<input name='particip2' type='hidden' value='A'>
 					<td></td>
 					<td><select  name="activite5" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe5" class="selectoption"><?php echo $optionsgroupe ?></select></td>
+					<input name='particip5' type='hidden' value='A'>
 				</tr>			
 				<tr>
 					<td><select name="activite3" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;<select name="groupe3" class="selectoption"><?php echo $optionsgroupe ?></select></td>
+					<input name='particip3' type='hidden' value='A'>
 					<td></td>
 					<td><select  name="activite6" class="selectoption"><?php echo $optionsactivite ?></select></td>
 					<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="groupe6" class="selectoption"><?php echo $optionsgroupe ?></select></td>
+					<input name='particip6' type='hidden' value='A'>
 				</tr>
 				<tr><td><input type="hidden" name="affich" value="on"</td></tr>
 			</table>

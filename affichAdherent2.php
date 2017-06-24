@@ -96,6 +96,13 @@
 		$optionsgroupe5 = putSelected2($optionsgroupe,$ad->groupe5);
 		$optionsgroupe6 = putSelected2($optionsgroupe,$ad->groupe6);	
 
+		if (!$ad->particip1) $ad->particip1='A';
+		if (!$ad->particip2) $ad->particip2='A';
+		if (!$ad->particip3) $ad->particip3='A';
+		if (!$ad->particip4) $ad->particip4='A';
+		if (!$ad->particip5) $ad->particip5='A';
+		if (!$ad->particip6) $ad->particip6='A';
+
 		$nencaisse=0;
 ?>		
 	<div class="champ">

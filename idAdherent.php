@@ -81,9 +81,9 @@
             $critere .= " (titre = ".$ad->titre.")";
         }
         if (strlen($ad->nom)>0) {
-        	if (strlen($sql)<1) $sql =$mes0." nom LIKE '%".addslashes($ad->nom)."%'";
-        	else $sql = $sql." AND nom LIKE '%".addslashes($ad->nom)."%'";
-            $critere .=" (nom contient ".$ad->nom.")";
+        	if (strlen($sql)<1) $sql =$mes0." nom LIKE '".addslashes($ad->nom)."%'";
+        	else $sql = $sql." AND nom LIKE '".addslashes($ad->nom)."%'";
+            $critere .=" (nom commence par ".$ad->nom.")";
         }
         if (strlen($ad->nomjf)>0) {
         	if (strlen($sql)<1) $sql =$mes0." nomjf LIKE '%".addslashes($ad->nomjf)."%'";
