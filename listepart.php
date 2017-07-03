@@ -104,7 +104,7 @@
 	<br>
 	<table class="tablepart">
 		<tr>
-			<th>Numéro</th><th></th><th>NOM</th><th>PRENOM</th><th>TELEPHONE</th><th>ADHESION</th><th>PARTICIPATION</th>
+			<th>Numéro</th><th>Qualité</th><th>Nom</th><th>Prénom</th><th>Téléphone</th><th>Adhésion</th><th>Participation</th>
 		</tr>
 		<?php 
 			for ($i=0;$i<$ad->n;$i++) {

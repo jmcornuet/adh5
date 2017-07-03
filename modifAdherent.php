@@ -20,7 +20,7 @@
 	    include("adherents.inc");
         include("liOptions.php");
 	    $ad = new Adherent;
-	    $ad->getpost();echo "ad->particip2 = ".$ad->particip2;
+	    $ad->getpost();//echo "ad->particip2 = ".$ad->particip2;
         $ad->activite1=getoption($optionsactivite,$ad->activite1);
         $ad->activite2=getoption($optionsactivite,$ad->activite2);
         $ad->activite3=getoption($optionsactivite,$ad->activite3);
