@@ -162,7 +162,7 @@
 
 		$an = strftime("%Y");
 		$mo = strtolower(strftime("%B"));
-		$jo =strftime("%d");
+		$jo =strftime("%d");if (substr($jo,0,1)=="0") $jo=substr($jo,1,1);
 		$optionsj = putSelected2($optionsj,$jo);
 		$optionsm = putSelected3($optionsm,$mo);
 		$optionsa = putSelected2($optionsa,$an);
